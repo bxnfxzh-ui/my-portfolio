@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>徐涛 - 视频运营 & 视觉设计师</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2D5F45',
+                        secondary: '#FFB726',
+                        accent: '#FF6B35',
+                        light: '#F8F5EB',
+                        dark: '#1A1A1A'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Poppins', 'system-ui', 'sans-serif']
+                    },
+                    spacing: {
+                        '21': '5.25rem',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); }
+            .clip-circle { clip-path: circle(50% at 50% 50%); }
+            .parallax { transform: translateZ(0); will-change: transform; }
+            .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+            .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+            .cursor-dot { width: 5px; height: 5px; background-color: #FFB726; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: transform 0.1s ease; }
+            .cursor-outline { width: 30px; height: 30px; border: 2px solid #FFB726; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: transform 0.15s ease, width 0.2s ease, height 0.2s ease, border-color 0.2s ease; }
+            .cursor-hover { width: 50px; height: 50px; border-color: #FF6B35; }
+        }
+    </style>
+</head>
+<body class="bg-light text-dark font-sans overflow-x-hidden">
+
+    <div class="cursor-dot hidden md:block"></div>
+    <div class="cursor-outline hidden md:block"></div>
+
+    <div id="frontend">
+        <nav class="fixed top-0 left-0 w-full z-50 bg-light/95 backdrop-blur-sm transition-all duration-300">
+            <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+                <a href="#" class="text-xl font-display font-bold flex items-center">
+                    <span class="text-accent mr-2"><i class="fa fa-star"></i></span>
+                    <span id="nav-name">徐涛</span>
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="hover:text-accent transition-colors text-sm">关于我</a>
+                    <a href="#experience" class="hover:text-accent transition-colors text-sm">工作经历</a>
+                    <a href="#skills" class="hover:text-accent transition-colors text-sm">技能专长</a>
+                    <a href="#portfolio" class="hover:text-accent transition-colors text-sm">作品集</a>
+                    <a href="#contact" class="hover:text-accent transition-colors text-sm">联系我</a>
+                </div>
+                <a href="#contact" class="hidden md:block bg-accent text-white px-5 py-2 rounded-full hover:bg-accent/90 transition-colors hover-lift text-sm">联系我</a>
+                <button class="md:hidden text-xl" id="menu-toggle"><i class="fa fa-bars"></i></button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute w-full px-6 py-4 flex flex-col space-y-4">
+                <a href="#about" class="hover:text-accent transition-colors">关于我</a>
+                <a href="#experience" class="hover:text-accent transition-colors">工作经历</a>
+                <a href="#skills" class="hover:text-accent transition-colors">技能专长</a>
+                <a href="#portfolio" class="hover:text-accent transition-colors">作品集</a>
+                <a href="#contact" class="hover:text-accent transition-colors">联系我</a>
+            </div>
+        </nav>
+
+        <section id="about" class="pt-32 pb-21 relative overflow-hidden">
+            <div class="absolute top-20 right-0 w-1/3 h-1/3 bg-primary/5 rounded-full -translate-y-1/4 translate-x-1/4 parallax" data-speed="0.05"></div>
+            <div class="absolute bottom-10 left-10 w-48 h-48 bg-secondary/5 rounded-full parallax" data-speed="0.08"></div>
+            
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="md:w-1/2 mb-10 md:mb-0">
+                        <h1 class="text-[clamp(2.5rem,6vw,4rem)] font-display font-bold leading-tight mb-5">
+                            你好，<br>
+                            <span class="text-primary" id="hero-name">我是徐涛</span>
+                        </h1>
+                        <p class="text-base text-gray-600 mb-7 max-w-lg" id="hero-desc">
+                            拥有18年跨越"传统主流媒体-新媒体矩阵-AI视觉前沿"的全周期视觉内容创作与团队操盘经验。
+                            精通影视级全流程制作，深谙新媒体平台生态，擅长AI工具在视觉内容中的创新应用。
+                        </p>
+                        <div class="flex flex-wrap gap-3 mb-8">
+                            <a href="#portfolio" class="bg-accent text-white px-6 py-2.5 rounded-full hover:bg-accent/90 transition-colors hover-lift flex items-center text-sm">
+                                <i class="fa fa-eye mr-2"></i> 查看作品
+                            </a>
+                            <a href="#contact" class="border-2 border-primary text-primary px-6 py-2.5 rounded-full hover:bg-primary hover:text-white transition-colors hover-lift flex items-center text-sm">
+                                <i class="fa fa-envelope mr-2"></i> 联系我
+                            </a>
+                        </div>
+                        <div class="flex items-center space-x-5">
+                            <a href="#" class="text-gray-600 hover:text-accent transition-colors text-lg"><i class="fa fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-accent transition-colors text-lg"><i class="fa fa-weixin"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-accent transition-colors text-lg"><i class="fa fa-weibo"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-accent transition-colors text-lg"><i class="fa fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 relative">
+                        <div class="relative w-64 h-64 md:w-72 md:h-72 mx-auto">
+                            <div class="absolute inset-0 bg-primary rounded-2xl transform rotate-3 parallax" data-speed="0.03"></div>
+                            <div class="absolute inset-0 bg-secondary rounded-2xl transform -rotate-3 parallax" data-speed="-0.02"></div>
+                            <div class="absolute inset-3 bg-gray-200 rounded-xl overflow-hidden">
+                                <div id="profile-image" class="w-full h-full">
+                                    <img src="https://picsum.photos/id/1005/400/400" alt="徐涛" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                            <!-- 个人照片标签背景改为橙黄色 -->
+                            <div class="absolute -top-3 -right-3 bg-secondary text-dark px-3 py-1.5 rounded-full font-medium text-sm parallax" data-speed="0.06">个人照片</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-primary text-white relative overflow-hidden">
+            <div class="container mx-auto px-6 relative z-10">
+                <h2 class="text-3xl font-display font-bold mb-12 text-center">个人优势</h2>
+                <div class="grid md:grid-cols-3 gap-6" id="advantages-grid"></div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-16 relative overflow-hidden">
+            <div class="absolute bottom-0 right-0 w-full h-full"><div class="absolute bottom-5 right-5 text-gray-100 text-[8rem] font-bold leading-none parallax" data-speed="0.02">经历</div></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <h2 class="text-3xl font-display font-bold mb-12 text-center">工作经历</h2>
+                <div class="relative" id="experience-timeline"></div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-16 bg-primary/5 relative overflow-hidden">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-display font-bold mb-12 text-center">技能专长</h2>
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div>
+                        <h3 class="text-xl font-bold mb-6 flex items-center"><span class="text-accent mr-2"><i class="fa fa-cogs"></i></span>软件技能</h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="software-skills"></div>
+                        <h3 class="text-xl font-bold mt-10 mb-6 flex items-center"><span class="text-accent mr-2"><i class="fa fa-robot"></i></span>AI工具</h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="ai-tools"></div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-6 flex items-center"><span class="text-accent mr-2"><i class="fa fa-tasks"></i></span>专业能力</h3>
+                        <div class="space-y-4" id="professional-skills"></div>
+                        <h3 class="text-xl font-bold mt-10 mb-6 flex items-center"><span class="text-accent mr-2"><i class="fa fa-certificate"></i></span>资格证书</h3>
+                        <div class="grid grid-cols-2 gap-3" id="certificates"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="py-16 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-full"></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <h2 class="text-3xl font-display font-bold mb-3 text-center">作品集</h2>
+                <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto text-sm" id="portfolio-intro"></p>
+                <div class="flex flex-wrap justify-center gap-3 mb-10">
+                    <button class="portfolio-filter active bg-primary text-white px-5 py-2 rounded-full hover-lift text-sm" data-filter="all">全部作品</button>
+                    <button class="portfolio-filter bg-gray-200 text-gray-700 px-5 py-2 rounded-full hover-lift text-sm" data-filter="promo">宣传片</button>
+                    <button class="portfolio-filter bg-gray-200 text-gray-700 px-5 py-2 rounded-full hover-lift text-sm" data-filter="short">短视频</button>
+                    <button class="portfolio-filter bg-gray-200 text-gray-700 px-5 py-2 rounded-full hover-lift text-sm" data-filter="ui">UI平面</button>
+                    <button class="portfolio-filter bg-gray-200 text-gray-700 px-5 py-2 rounded-full hover-lift text-sm" data-filter="photography">商业摄影</button>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid"></div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-primary/5">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-display font-bold mb-12 text-center">教育背景</h2>
+                <div class="grid md:grid-cols-3 gap-6" id="education-grid"></div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-16 relative overflow-hidden">
+            <div class="absolute bottom-0 right-0 w-full h-full"><div class="absolute bottom-10 right-10 text-gray-100 text-[8rem] font-bold leading-none parallax" data-speed="0.02">联系</div></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <h2 class="text-3xl font-display font-bold mb-3 text-center">联系我</h2>
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div class="bg-primary text-white p-6 rounded-xl h-full">
+                        <h3 class="text-xl font-bold mb-6">联系方式</h3>
+                        <div class="space-y-5">
+                            <div class="flex items-center"><div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center mr-3"><i class="fa fa-phone"></i></div><div><p class="text-white/70 text-xs">电话</p><p class="text-base font-medium" id="contact-phone">13810878952</p></div></div>
+                            <div class="flex items-center"><div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center mr-3"><i class="fa fa-envelope"></i></div><div><p class="text-white/70 text-xs">邮箱</p><p class="text-base font-medium" id="contact-email">xutao89@163.com</p></div></div>
+                            <div class="flex items-center"><div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center mr-3"><i class="fa fa-map-marker"></i></div><div><p class="text-white/70 text-xs">期望城市</p><p class="text-base font-medium" id="contact-city">不限</p></div></div>
+                            <div class="flex items-center"><div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center mr-3"><i class="fa fa-briefcase"></i></div><div><p class="text-white/70 text-xs">求职意向</p><p class="text-base font-medium" id="contact-position">视频运营</p></div></div>
+                        </div>
+                    </div>
+                    <div>
+                        <form class="bg-white p-6 rounded-xl shadow-lg">
+                            <div class="mb-4"><label class="block text-gray-700 font-medium mb-1 text-sm">姓名</label><input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary text-sm" placeholder="请输入您的姓名"></div>
+                            <div class="mb-4"><label class="block text-gray-700 font-medium mb-1 text-sm">邮箱</label><input type="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary text-sm" placeholder="请输入您的邮箱"></div>
+                            <div class="mb-4"><label class="block text-gray-700 font-medium mb-1 text-sm">消息内容</label><textarea rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary text-sm" placeholder="请输入您的消息内容"></textarea></div>
+                            <button type="submit" class="w-full bg-accent text-white py-2.5 rounded-lg hover:bg-accent/90 transition-colors hover-lift font-medium text-sm">发送消息</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-dark text-white py-10 text-center">
+            <p class="text-white/60 text-xs">© 2025 徐涛. 保留所有权利.</p>
+        </footer>
+        <button id="back-to-top" class="fixed bottom-6 right-6 bg-accent text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 z-50"><i class="fa fa-arrow-up"></i></button>
+    </div>
+
+    <!-- 后台入口按钮 -->
+    <a href="./admin/" target="_blank" class="fixed bottom-5 left-5 z-50 w-10 h-10 bg-dark text-white rounded-full flex items-center justify-center opacity-30 hover:opacity-100 transition-opacity">
+        <i class="fa fa-cog"></i>
+    </a>
+
+    <script>
+        // 完整默认数据（即使data.json不存在也能正常显示）
+        const defaultData = {
+            basic: { name: "徐涛", desc: "拥有18年跨越\"传统主流媒体-新媒体矩阵-AI视觉前沿\"的全周期视觉内容创作与团队操盘经验。精通影视级全流程制作，深谙新媒体平台生态，擅长AI工具在视觉内容中的创新应用。", portfolioIntro: "以下是我参与的部分代表性项目，点击可查看详细内容和作品展示", contactIntro: "如果您对我的作品感兴趣，或者有任何合作意向，欢迎随时与我联系", phone: "13810878952", email: "xutao89@163.com", city: "不限", position: "视频运营", avatar: "https://picsum.photos/id/1005/400/400" },
+            advantages: [
+                { id: 1, icon: "fa-film", title: "传统媒体功底", desc: "具备深厚的传统广播级视频制作功底，精通从高质感商业摄影、分镜策划到AE特效包装的影视级全流程制作。" },
+                { id: 2, icon: "fa-mobile", title: "新媒体运营", desc: "深谙抖音、小红书等新媒体平台生态，曾成功主导0-1打造370万+粉丝量级的头部IP矩阵。" },
+                { id: 3, icon: "fa-rocket", title: "AI视觉创新", desc: "熟练掌握并落地应用各类AI音视频生成与图像工具，能够主导内容中台与AI系统的融合。" }
+            ],
+            skills: {
+                software: [{id:1,name:"Premiere Pro",icon:"fa-video-camera"},{id:2,name:"After Effects",icon:"fa-magic"},{id:3,name:"Photoshop",icon:"fa-picture-o"},{id:4,name:"Illustrator",icon:"fa-paint-brush"},{id:5,name:"Final Cut",icon:"fa-film"},{id:6,name:"Lightroom",icon:"fa-camera"}],
+                ai: [{id:1,name:"KlingAI",icon:"fa-star"},{id:2,name:"即梦",icon:"fa-cloud"},{id:3,name:"海螺",icon:"fa-shell"},{id:4,name:"ChatGPT",icon:"fa-comments"},{id:5,name:"Gemini",icon:"fa-brain"},{id:6,name:"Midjourney",icon:"fa-image"}],
+                professional: [{id:1,name:"视频全流程制作",level:95},{id:2,name:"新媒体平台运营",level:90},{id:3,name:"AI视觉内容生成",level:85},{id:4,name:"团队管理与协作",level:88},{id:5,name:"内容战略与规划",level:92},{id:6,name:"商业摄影与布光",level:87}],
+                certificates: [{id:1,name:"人力资源管理师",level:"二级",icon:"fa-id-card"},{id:2,name:"驾驶证",level:"C1",icon:"fa-car"}]
+            },
+            experience: [
+                { id: 1, company: "特天集团有限公司", position: "视频运营", period: "2020.08-2024.11", icon: "fa-briefcase", color: "secondary", duties: ["负责集团全渠道视觉内容的风格调性与结构统筹", "引入AI工具完成混剪创作与去重优化", "牵头集团大型影像摄制"], achievements: ["负责张宏民抖音账号运营", "账号粉丝总量 370W+", "单视频最高点赞 219W+"] },
+                { id: 2, company: "国家开放大学", position: "视频规划师", period: "2014.11-2020.08", icon: "fa-graduation-cap", color: "primary/10", duties: ["全面负责国家级高清微课程全流程摄制", "负责大型线上直播视频保障"], achievements: ["主导《礼仪》等重点栏目制作，服务全国线上教学。"] },
+                { id: 3, company: "北京金银岛科技", position: "视频制作", period: "2010.06-2014.10", icon: "fa-building", color: "secondary/50", duties: ["主导公司视频创意策划与全流程制作"], achievements: ["构建企业视听资产体系，捕捉行业趋势。"] },
+                { id: 4, company: "央视12套 & 星斗影视", position: "视频编辑 & 后期", period: "2005.07-2010.06", icon: "fa-television", color: "primary/10", duties: ["参与《天网》《大家看法》等栏目剪辑"], achievements: ["严格遵守媒体纪律，强化内容合规意识。"] }
+            ],
+            portfolio: [
+                { id: 1, title: "企业宣传片 01", description: "集团品牌形象宣传片制作", date: "2024", categories: ["promo"], cover: "https://picsum.photos/id/10/600/400" },
+                { id: 2, title: "企业宣传片 02", description: "企业文化宣传专题片", date: "2023", categories: ["promo"], cover: "https://picsum.photos/id/11/600/400" },
+                { id: 3, title: "企业宣传片 03", description: "产品功能演示宣传片", date: "2023", categories: ["promo"], cover: "https://picsum.photos/id/12/600/400" },
+                { id: 4, title: "企业宣传片 04", description: "招商合作宣传片", date: "2022", categories: ["promo"], cover: "https://picsum.photos/id/13/600/400" },
+                { id: 5, title: "企业宣传片 05", description: "年度总结宣传片", date: "2022", categories: ["promo"], cover: "https://picsum.photos/id/14/600/400" },
+                { id: 6, title: "企业宣传片 06", description: "品牌故事宣传片", date: "2021", categories: ["promo"], cover: "https://picsum.photos/id/15/600/400" },
+                
+                { id: 7, title: "短视频作品 01", description: "爆款短视频内容", date: "2024", categories: ["short"], cover: "https://picsum.photos/id/20/600/400" },
+                { id: 8, title: "短视频作品 02", description: "IP账号短视频", date: "2024", categories: ["short"], cover: "https://picsum.photos/id/21/600/400" },
+                
+                { id: 9, title: "UI视觉设计", description: "品牌视觉与UI全案设计", date: "2024", categories: ["ui"], cover: "https://picsum.photos/id/30/600/400" },
+                
+                { id: 10, title: "商业摄影 01", description: "商务人像摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/40/600/400" },
+                { id: 11, title: "商业摄影 02", description: "产品场景摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/41/600/400" },
+                { id: 12, title: "商业摄影 03", description: "活动现场摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/42/600/400" },
+                { id: 13, title: "商业摄影 04", description: "形象照摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/43/600/400" },
+                { id: 14, title: "商业摄影 05", description: "环境空间摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/44/600/400" },
+                { id: 15, title: "商业摄影 06", description: "团队形象摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/45/600/400" },
+                { id: 16, title: "商业摄影 07", description: "静物创意摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/46/600/400" },
+                { id: 17, title: "商业摄影 08", description: "户外场景摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/47/600/400" },
+                { id: 18, title: "商业摄影 09", description: "高端肖像摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/48/600/400" }
+            ],
+            education: [
+                { id: 1, school: "白俄罗斯国立经济大学", degree: "硕士", major: "经济学", period: "2024-2025", icon: "fa-graduation-cap" },
+                { id: 2, school: "南开大学", degree: "本科", major: "工商管理", period: "2015-2019", icon: "fa-university" },
+                { id: 3, school: "辽宁科技学院", degree: "大专", major: "动画设计", period: "2002-2005", icon: "fa-paint-brush" }
+            ]
+        };
+
+        let siteData = {};
+
+        // 优先从data.json加载数据，失败则使用默认数据
+        async function loadData() {
+            try {
+                const response = await fetch('./data.json');
+                if (response.ok) {
+                    const jsonData = await response.json();
+                    // 合并数据，确保所有字段都存在
+                    siteData = { ...defaultData, ...jsonData };
+                } else {
+                    siteData = defaultData;
+                }
+            } catch (error) {
+                siteData = defaultData;
+            }
+            renderAll();
+        }
+
+        function renderAll() {
+            document.getElementById('nav-name').textContent = siteData.basic.name;
+            document.getElementById('hero-name').textContent = `我是${siteData.basic.name}`;
+            document.getElementById('hero-desc').textContent = siteData.basic.desc;
+            document.getElementById('portfolio-intro').textContent = siteData.basic.portfolioIntro;
+            document.getElementById('contact-phone').textContent = siteData.basic.phone;
+            document.getElementById('contact-email').textContent = siteData.basic.email;
+            document.getElementById('profile-image').innerHTML = `<img src="${siteData.basic.avatar}" alt="${siteData.basic.name}" class="w-full h-full object-cover">`;
+            
+            document.getElementById('advantages-grid').innerHTML = siteData.advantages.map(adv => `<div class="bg-white/10 backdrop-blur-sm p-6 rounded-xl hover-lift"><div class="text-secondary text-3xl mb-4"><i class="fa ${adv.icon}"></i></div><h3 class="text-xl font-bold mb-3">${adv.title}</h3><p class="text-white/80 text-sm">${adv.desc}</p></div>`).join('');
+            document.getElementById('software-skills').innerHTML = siteData.skills.software.map(s => `<div class="bg-white p-3 rounded-lg text-center hover-lift"><i class="fa ${s.icon} text-2xl text-primary mb-1"></i><p class="text-sm">${s.name}</p></div>`).join('');
+            document.getElementById('ai-tools').innerHTML = siteData.skills.ai.map(t => `<div class="bg-white p-3 rounded-lg text-center hover-lift"><i class="fa ${t.icon} text-2xl text-secondary mb-1"></i><p class="text-sm">${t.name}</p></div>`).join('');
+            document.getElementById('professional-skills').innerHTML = siteData.skills.professional.map(s => `<div><div class="flex justify-between mb-1"><span class="font-medium text-sm">${s.name}</span><span class="text-sm">${s.level}%</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div class="bg-primary h-2.5 rounded-full" style="width: ${s.level}%"></div></div></div>`).join('');
+            document.getElementById('certificates').innerHTML = siteData.skills.certificates.map(c => `<div class="bg-white p-3 rounded-lg hover-lift"><div class="flex items-center"><i class="fa ${c.icon} text-xl text-secondary mr-2"></i><div><p class="font-medium text-sm">${c.name}</p><p class="text-xs text-gray-600">${c.level}</p></div></div></div>`).join('');
+            
+            document.getElementById('experience-timeline').innerHTML = siteData.experience.map((exp, idx) => `
+                <div class="mb-12 md:flex md:justify-between items-center relative">
+                    <div class="md:w-5/12 mb-6 md:mb-0 md:text-right md:pr-10"><div class="bg-white p-5 rounded-xl hover-lift"><h3 class="text-xl font-bold mb-2">${exp.company}</h3><h4 class="text-lg text-primary font-medium mb-2">${exp.position}</h4><p class="text-gray-600 mb-3 text-sm">${exp.period}</p><ul class="text-gray-700 space-y-1.5 text-sm">${exp.duties.map(d => `<li>• ${d}</li>`).join('')}</ul></div></div>
+                    <div class="hidden md:flex absolute left-1/2 w-8 h-8 bg-accent rounded-full transform -translate-x-1/2 items-center justify-center text-white z-10 shadow-md"><i class="fa ${exp.icon} text-sm"></i></div>
+                    <div class="md:w-5/12 md:pl-10"><div class="bg-white p-5 rounded-xl shadow-lg hover-lift text-left"><h4 class="text-lg font-bold mb-3 border-b pb-2 border-gray-100">核心业绩</h4><ul class="text-gray-700 space-y-1.5 text-sm">${exp.achievements.map(a => `<li class="flex items-start"><span class="text-accent mr-2">✦</span><span>${a}</span></li>`).join('')}</ul></div></div>
+                </div>`).join('');
+
+            document.getElementById('portfolio-grid').innerHTML = siteData.portfolio.map(item => {
+                const catMap = { "promo": "宣传片", "short": "短视频", "ui": "UI平面", "photography": "商业摄影" };
+                return `<div class="portfolio-item ${item.categories.join(' ')}"><div class="bg-white rounded-xl overflow-hidden shadow-lg hover-lift group"><div class="relative h-48 overflow-hidden"><img src="${item.cover}" class="w-full h-full object-cover"><div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><button class="bg-accent text-white px-5 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform text-sm">查看详情</button></div></div><div class="p-5"><h3 class="text-lg font-bold mb-2">${item.title}</h3><p class="text-gray-600 mb-3 text-sm">${item.description}</p><div class="flex justify-between items-center"><span class="text-xs text-gray-500">${item.date}</span><div class="flex space-x-2">${item.categories.map(c => `<span class="bg-primary/10 text-primary text-xs px-2 py-1 rounded">${catMap[c] || c}</span>`).join('')}</div></div></div></div></div>`;
+            }).join('');
+
+            // 默认只显示前9个作品
+            const items = document.querySelectorAll('.portfolio-item');
+            items.forEach((item, index) => {
+                item.style.display = index < 9 ? 'block' : 'none';
+            });
+
+            document.getElementById('education-grid').innerHTML = siteData.education.map(edu => `<div class="bg-white p-6 rounded-xl shadow-lg hover-lift text-center"><div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fa ${edu.icon} text-2xl text-primary"></i></div><h3 class="text-lg font-bold mb-2">${edu.school}</h3><p class="text-accent font-medium mb-1">${edu.degree}</p><p class="text-gray-600 mb-3 text-sm">${edu.major}</p><p class="text-xs text-gray-500">${edu.period}</p></div>`).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadData();
+            const parallaxElements = document.querySelectorAll('.parallax');
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                parallaxElements.forEach(el => {
+                    const speed = el.getAttribute('data-speed') || 0.1;
+                    el.style.transform = `translateY(${scrollY * speed}px)`;
+                });
+                const btt = document.getElementById('back-to-top');
+                if (scrollY > 300) btt.classList.remove('opacity-0','invisible'); else btt.classList.add('opacity-0','invisible');
+            });
+            document.getElementById('back-to-top').addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+            document.getElementById('menu-toggle').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
+            
+            // 作品集筛选逻辑
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('portfolio-filter')) {
+                    document.querySelectorAll('.portfolio-filter').forEach(b => {
+                        b.classList.remove('active', 'bg-primary', 'text-white');
+                        b.classList.add('bg-gray-200', 'text-gray-700');
+                    });
+                    e.target.classList.add('active', 'bg-primary', 'text-white');
+                    const filter = e.target.getAttribute('data-filter');
+                    const items = document.querySelectorAll('.portfolio-item');
+                    
+                    items.forEach(i => i.style.display = 'none');
+                    
+                    if(filter === 'all') {
+                        items.forEach(i => i.style.display = 'block');
+                    } else if(filter === 'promo') {
+                        Array.from(items).slice(0,6).forEach(i => i.style.display = 'block');
+                    } else if(filter === 'short') {
+                        Array.from(items).slice(6,8).forEach(i => i.style.display = 'block');
+                    } else if(filter === 'ui') {
+                        Array.from(items).slice(8,9).forEach(i => i.style.display = 'block');
+                    } else if(filter === 'photography') {
+                        Array.from(items).slice(9,18).forEach(i => i.style.display = 'block');
+                    }
+                }
+            });
+
+            // 自定义光标效果
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+            
+            window.addEventListener('mousemove', (e) => {
+                cursorDot.style.left = `${e.clientX}px`;
+                cursorDot.style.top = `${e.clientY}px`;
+                
+                cursorOutline.style.left = `${e.clientX}px`;
+                cursorOutline.style.top = `${e.clientY}px`;
+            });
+
+            // 链接和按钮的光标效果
+            document.querySelectorAll('a, button').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorOutline.classList.add('cursor-hover');
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursorOutline.classList.remove('cursor-hover');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
