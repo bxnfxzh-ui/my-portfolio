@@ -1,36 +1,31 @@
 backend:
   name: git-gateway
-  branch: main # 确保这是你的主分支名称
+  branch: main
 
-# 本地测试支持
-local_backend: true
-
-# 图片上传存放路径
-media_folder: "images"
-public_folder: "images"
+media_folder: "static/uploads"
+public_folder: "/uploads"
 
 collections:
-  - name: "site_data"
-    label: "全站内容管理"
-    delete: false
-    editor:
-      preview: false
+  - name: "website_content"
+    label: "网站内容管理"
     files:
-      - name: "data"
-        label: "数据中心"
-        file: "data.json"
+      - name: "home_page"
+        label: "首页编辑"
+        file: "index.html"
         fields:
-          - { label: "基本信息 (Basic)", name: "basic", widget: "object", fields: [
-              { label: "姓名", name: "name", widget: "string" },
-              { label: "个人描述", name: "desc", widget: "text" },
-              { label: "手机号", name: "phone", widget: "string" },
-              { label: "邮箱", name: "email", widget: "string" },
-              { label: "头像地址", name: "avatar", widget: "image" }
-            ]}
-          - { label: "工作经历 (Experience)", name: "experience", widget: "list", fields: [
-              { label: "公司名称", name: "company", widget: "string" },
-              { label: "职位", name: "position", widget: "string" },
-              { label: "时间段", name: "period", widget: "string" },
-              { label: "核心职责 (Duties)", name: "duties", widget: "list" },
-              { label: "核心业绩 (Achievements)", name: "achievements", widget: "list" }
-            ]}
+          - label: "首页大标题"
+            name: "title"
+            widget: "string"
+
+          - label: "首页正文内容"
+            name: "content"
+            widget: "markdown"
+
+          - label: "上传展示图片"
+            name: "cover_img"
+            widget: "image"
+
+          - label: "上传网站视频"
+            name: "video_file"
+            widget: "file"
+            multiple: false
