@@ -1,35 +1,36 @@
 backend:
-  name: github
-  repo: 你的GitHub用户名/你的仓库名 # 例如：xutao/my-website
-  branch: main
-  site_domain: 你的网站域名 # 例如：xutao.github.io
+  name: git-gateway
+  branch: main # 确保这是你的主分支名称
 
-media_folder: "images/uploads" # 上传的图片会存在这里
-public_folder: "/images/uploads"
+# 本地测试支持
+local_backend: true
+
+# 图片上传存放路径
+media_folder: "images"
+public_folder: "images"
 
 collections:
-  - name: "settings"
-    label: "网站设置"
+  - name: "site_data"
+    label: "全站内容管理"
+    delete: false
+    editor:
+      preview: false
     files:
-      - name: "basic"
-        label: "基本信息"
+      - name: "data"
+        label: "数据中心"
         file: "data.json"
         fields:
-          - {label: "姓名", name: "name", widget: "string"}
-          - {label: "个人简介", name: "desc", widget: "text"}
-          - {label: "作品集介绍", name: "portfolioIntro", widget: "text"}
-          - {label: "电话", name: "phone", widget: "string"}
-          - {label: "邮箱", name: "email", widget: "string"}
-          - {label: "头像", name: "avatar", widget: "image"}
-
-  - name: "portfolio"
-    label: "作品集"
-    folder: "data/portfolio"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - {label: "标题", name: "title", widget: "string"}
-      - {label: "描述", name: "description", widget: "text"}
-      - {label: "日期", name: "date", widget: "datetime"}
-      - {label: "分类", name: "categories", widget: "select", options: ["promo", "short", "ui", "photography"]}
-      - {label: "封面图", name: "cover", widget: "image"}
+          - { label: "基本信息 (Basic)", name: "basic", widget: "object", fields: [
+              { label: "姓名", name: "name", widget: "string" },
+              { label: "个人描述", name: "desc", widget: "text" },
+              { label: "手机号", name: "phone", widget: "string" },
+              { label: "邮箱", name: "email", widget: "string" },
+              { label: "头像地址", name: "avatar", widget: "image" }
+            ]}
+          - { label: "工作经历 (Experience)", name: "experience", widget: "list", fields: [
+              { label: "公司名称", name: "company", widget: "string" },
+              { label: "职位", name: "position", widget: "string" },
+              { label: "时间段", name: "period", widget: "string" },
+              { label: "核心职责 (Duties)", name: "duties", widget: "list" },
+              { label: "核心业绩 (Achievements)", name: "achievements", widget: "list" }
+            ]}
