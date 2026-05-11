@@ -1,6 +1,8 @@
 backend:
-  name: git-gateway
-  branch: main
+  backend:
+  name: github
+  repo: bxnfxzh-ui/你的仓库名  # 填入完整的仓库路径
+  branch: main             # 确保分支名称正确
 
 media_folder: "static/uploads"
 public_folder: "/uploads"
