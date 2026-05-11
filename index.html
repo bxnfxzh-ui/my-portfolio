@@ -49,38 +49,6 @@
 </head>
 <body class="bg-light text-dark font-sans overflow-x-hidden">
 
-<!-- ===================== 【后台管理系统 - 完整保留】 ===================== -->
-<div id="admin-login" class="fixed inset-0 z-[9999] bg-black/70 hidden items-center justify-center">
-  <div class="bg-white w-full max-w-sm p-6 rounded-2xl shadow-xl">
-    <h3 class="text-xl font-bold mb-4 text-center">管理后台登录</h3>
-    <input id="admin-username" class="w-full border p-2 rounded mb-2" placeholder="账号" value="admin">
-    <input id="admin-password" type="password" class="w-full border p-2 rounded mb-4" placeholder="密码" value="123456">
-    <button onclick="adminLogin()" class="w-full bg-primary text-white p-2 rounded">登录</button>
-  </div>
-</div>
-
-<div id="admin-panel" class="fixed top-0 left-0 w-80 h-full bg-white shadow-2xl z-[9998] transform -translate-x-full transition-transform overflow-y-auto pb-20">
-  <div class="p-4 border-b sticky top-0 bg-white flex justify-between items-center">
-    <h3 class="font-bold">后台管理</h3>
-    <button onclick="closeAdmin()" class="text-red-500">关闭</button>
-  </div>
-  <div class="p-4 space-y-3 text-sm">
-    <div><label>姓名</label><input id="edit-name" class="w-full border p-2 rounded"></div>
-    <div><label>个人简介</label><textarea id="edit-desc" class="w-full border p-2 rounded h-20"></textarea></div>
-    <div><label>作品集介绍</label><textarea id="edit-portfolioIntro" class="w-full border p-2 rounded h-20"></textarea></div>
-    <div><label>电话</label><input id="edit-phone" class="w-full border p-2 rounded"></div>
-    <div><label>邮箱</label><input id="edit-email" class="w-full border p-2 rounded"></div>
-    <div><label>头像URL</label><input id="edit-avatar" class="w-full border p-2 rounded"></div>
-    <button onclick="saveAllData()" class="w-full bg-accent text-white p-2 rounded mt-2">保存修改</button>
-    <button onclick="logoutAdmin()" class="w-full bg-gray-200 p-2 rounded mt-1">退出登录</button>
-  </div>
-</div>
-
-<button onclick="openAdminLogin()" class="fixed bottom-5 left-5 z-50 w-10 h-10 bg-dark text-white rounded-full flex items-center justify-center opacity-30 hover:opacity-100 transition-opacity">
-  <i class="fa fa-cog"></i>
-</button>
-<!-- ===================== 【后台结束】 ===================== -->
-
     <div class="cursor-dot hidden md:block"></div>
     <div class="cursor-outline hidden md:block"></div>
 
@@ -149,7 +117,6 @@
                                     <img src="https://picsum.photos/id/1005/400/400" alt="徐涛" class="w-full h-full object-cover">
                                 </div>
                             </div>
-                            <!-- 个人照片标签背景改为橙黄色 -->
                             <div class="absolute -top-3 -right-3 bg-secondary text-dark px-3 py-1.5 rounded-full font-medium text-sm parallax" data-speed="0.06">个人照片</div>
                         </div>
                     </div>
@@ -247,61 +214,77 @@
         <button id="back-to-top" class="fixed bottom-6 right-6 bg-accent text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 z-50"><i class="fa fa-arrow-up"></i></button>
     </div>
 
+    <!-- 后台入口按钮 -->
+    <a href="/admin" target="_blank" class="fixed bottom-5 left-5 z-50 w-10 h-10 bg-dark text-white rounded-full flex items-center justify-center opacity-30 hover:opacity-100 transition-opacity">
+        <i class="fa fa-cog"></i>
+    </a>
+
     <script>
-        const defaultData = {
-            basic: { name: "徐涛", desc: "拥有18年跨越\"传统主流媒体-新媒体矩阵-AI视觉前沿\"的全周期视觉内容创作与团队操盘经验。精通影视级全流程制作，深谙新媒体平台生态，擅长AI工具在视觉内容中的创新应用。", portfolioIntro: "以下是我参与的部分代表性项目，点击可查看详细内容和作品展示", contactIntro: "如果您对我的作品感兴趣，或者有任何合作意向，欢迎随时与我联系", phone: "13810878952", email: "xutao89@163.com", city: "不限", position: "视频运营", avatar: "https://picsum.photos/id/1005/400/400" },
-            advantages: [
-                { id: 1, icon: "fa-film", title: "传统媒体功底", desc: "具备深厚的传统广播级视频制作功底，精通从高质感商业摄影、分镜策划到AE特效包装的影视级全流程制作。" },
-                { id: 2, icon: "fa-mobile", title: "新媒体运营", desc: "深谙抖音、小红书等新媒体平台生态，曾成功主导0-1打造370万+粉丝量级的头部IP矩阵。" },
-                { id: 3, icon: "fa-rocket", title: "AI视觉创新", desc: "熟练掌握并落地应用各类AI音视频生成与图像工具，能够主导内容中台与AI系统的融合。" }
-            ],
-            skills: {
-                software: [{id:1,name:"Premiere Pro",icon:"fa-video-camera"},{id:2,name:"After Effects",icon:"fa-magic"},{id:3,name:"Photoshop",icon:"fa-picture-o"},{id:4,name:"Illustrator",icon:"fa-paint-brush"},{id:5,name:"Final Cut",icon:"fa-film"},{id:6,name:"Lightroom",icon:"fa-camera"}],
-                ai: [{id:1,name:"KlingAI",icon:"fa-star"},{id:2,name:"即梦",icon:"fa-cloud"},{id:3,name:"海螺",icon:"fa-shell"},{id:4,name:"ChatGPT",icon:"fa-comments"},{id:5,name:"Gemini",icon:"fa-brain"},{id:6,name:"Midjourney",icon:"fa-image"}],
-                professional: [{id:1,name:"视频全流程制作",level:95},{id:2,name:"新媒体平台运营",level:90},{id:3,name:"AI视觉内容生成",level:85},{id:4,name:"团队管理与协作",level:88},{id:5,name:"内容战略与规划",level:92},{id:6,name:"商业摄影与布光",level:87}],
-                certificates: [{id:1,name:"人力资源管理师",level:"二级",icon:"fa-id-card"},{id:2,name:"驾驶证",level:"C1",icon:"fa-car"}]
-            },
-            experience: [
-                { id: 1, company: "特天集团有限公司", position: "视频运营", period: "2020.08-2024.11", icon: "fa-briefcase", color: "secondary", duties: ["负责集团全渠道视觉内容的风格调性与结构统筹", "引入AI工具完成混剪创作与去重优化", "牵头集团大型影像摄制"], achievements: ["负责张宏民抖音账号运营", "账号粉丝总量 370W+", "单视频最高点赞 219W+"] },
-                { id: 2, company: "国家开放大学", position: "视频规划师", period: "2014.11-2020.08", icon: "fa-graduation-cap", color: "primary/10", duties: ["全面负责国家级高清微课程全流程摄制", "负责大型线上直播视频保障"], achievements: ["主导《礼仪》等重点栏目制作，服务全国线上教学。"] },
-                { id: 3, company: "北京金银岛科技", position: "视频制作", period: "2010.06-2014.10", icon: "fa-building", color: "secondary/50", duties: ["主导公司视频创意策划与全流程制作"], achievements: ["构建企业视听资产体系，捕捉行业趋势。"] },
-                { id: 4, company: "央视12套 & 星斗影视", position: "视频编辑 & 后期", period: "2005.07-2010.06", icon: "fa-television", color: "primary/10", duties: ["参与《天网》《大家看法》等栏目剪辑"], achievements: ["严格遵守媒体纪律，强化内容合规意识。"] }
-            ],
-            portfolio: [
-                { id: 1, title: "企业宣传片 01", description: "集团品牌形象宣传片制作", date: "2024", categories: ["promo"], cover: "https://picsum.photos/id/10/600/400" },
-                { id: 2, title: "企业宣传片 02", description: "企业文化宣传专题片", date: "2023", categories: ["promo"], cover: "https://picsum.photos/id/11/600/400" },
-                { id: 3, title: "企业宣传片 03", description: "产品功能演示宣传片", date: "2023", categories: ["promo"], cover: "https://picsum.photos/id/12/600/400" },
-                { id: 4, title: "企业宣传片 04", description: "招商合作宣传片", date: "2022", categories: ["promo"], cover: "https://picsum.photos/id/13/600/400" },
-                { id: 5, title: "企业宣传片 05", description: "年度总结宣传片", date: "2022", categories: ["promo"], cover: "https://picsum.photos/id/14/600/400" },
-                { id: 6, title: "企业宣传片 06", description: "品牌故事宣传片", date: "2021", categories: ["promo"], cover: "https://picsum.photos/id/15/600/400" },
-                
-                { id: 7, title: "短视频作品 01", description: "爆款短视频内容", date: "2024", categories: ["short"], cover: "https://picsum.photos/id/20/600/400" },
-                { id: 8, title: "短视频作品 02", description: "IP账号短视频", date: "2024", categories: ["short"], cover: "https://picsum.photos/id/21/600/400" },
-                
-                { id: 9, title: "UI视觉设计", description: "品牌视觉与UI全案设计", date: "2024", categories: ["ui"], cover: "https://picsum.photos/id/30/600/400" },
-                
-                { id: 10, title: "商业摄影 01", description: "商务人像摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/40/600/400" },
-                { id: 11, title: "商业摄影 02", description: "产品场景摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/41/600/400" },
-                { id: 12, title: "商业摄影 03", description: "活动现场摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/42/600/400" },
-                { id: 13, title: "商业摄影 04", description: "形象照摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/43/600/400" },
-                { id: 14, title: "商业摄影 05", description: "环境空间摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/44/600/400" },
-                { id: 15, title: "商业摄影 06", description: "团队形象摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/45/600/400" },
-                { id: 16, title: "商业摄影 07", description: "静物创意摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/46/600/400" },
-                { id: 17, title: "商业摄影 08", description: "户外场景摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/47/600/400" },
-                { id: 18, title: "商业摄影 09", description: "高端肖像摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/48/600/400" }
-            ],
-            education: [
-                { id: 1, school: "白俄罗斯国立经济大学", degree: "硕士", major: "经济学", period: "2024-2025", icon: "fa-graduation-cap" },
-                { id: 2, school: "南开大学", degree: "本科", major: "工商管理", period: "2015-2019", icon: "fa-university" },
-                { id: 3, school: "辽宁科技学院", degree: "大专", major: "动画设计", period: "2002-2005", icon: "fa-paint-brush" }
-            ]
-        };
+        // 从JSON文件加载数据
+        async function loadData() {
+            try {
+                const response = await fetch('/data.json');
+                siteData = await response.json();
+                renderAll();
+            } catch (error) {
+                // 如果加载失败，使用默认数据
+                siteData = getDefaultData();
+                renderAll();
+            }
+        }
+
+        function getDefaultData() {
+            return {
+                basic: { name: "徐涛", desc: "拥有18年跨越\"传统主流媒体-新媒体矩阵-AI视觉前沿\"的全周期视觉内容创作与团队操盘经验。精通影视级全流程制作，深谙新媒体平台生态，擅长AI工具在视觉内容中的创新应用。", portfolioIntro: "以下是我参与的部分代表性项目，点击可查看详细内容和作品展示", contactIntro: "如果您对我的作品感兴趣，或者有任何合作意向，欢迎随时与我联系", phone: "13810878952", email: "xutao89@163.com", city: "不限", position: "视频运营", avatar: "https://picsum.photos/id/1005/400/400" },
+                advantages: [
+                    { id: 1, icon: "fa-film", title: "传统媒体功底", desc: "具备深厚的传统广播级视频制作功底，精通从高质感商业摄影、分镜策划到AE特效包装的影视级全流程制作。" },
+                    { id: 2, icon: "fa-mobile", title: "新媒体运营", desc: "深谙抖音、小红书等新媒体平台生态，曾成功主导0-1打造370万+粉丝量级的头部IP矩阵。" },
+                    { id: 3, icon: "fa-rocket", title: "AI视觉创新", desc: "熟练掌握并落地应用各类AI音视频生成与图像工具，能够主导内容中台与AI系统的融合。" }
+                ],
+                skills: {
+                    software: [{id:1,name:"Premiere Pro",icon:"fa-video-camera"},{id:2,name:"After Effects",icon:"fa-magic"},{id:3,name:"Photoshop",icon:"fa-picture-o"},{id:4,name:"Illustrator",icon:"fa-paint-brush"},{id:5,name:"Final Cut",icon:"fa-film"},{id:6,name:"Lightroom",icon:"fa-camera"}],
+                    ai: [{id:1,name:"KlingAI",icon:"fa-star"},{id:2,name:"即梦",icon:"fa-cloud"},{id:3,name:"海螺",icon:"fa-shell"},{id:4,name:"ChatGPT",icon:"fa-comments"},{id:5,name:"Gemini",icon:"fa-brain"},{id:6,name:"Midjourney",icon:"fa-image"}],
+                    professional: [{id:1,name:"视频全流程制作",level:95},{id:2,name:"新媒体平台运营",level:90},{id:3,name:"AI视觉内容生成",level:85},{id:4,name:"团队管理与协作",level:88},{id:5,name:"内容战略与规划",level:92},{id:6,name:"商业摄影与布光",level:87}],
+                    certificates: [{id:1,name:"人力资源管理师",level:"二级",icon:"fa-id-card"},{id:2,name:"驾驶证",level:"C1",icon:"fa-car"}]
+                },
+                experience: [
+                    { id: 1, company: "特天集团有限公司", position: "视频运营", period: "2020.08-2024.11", icon: "fa-briefcase", color: "secondary", duties: ["负责集团全渠道视觉内容的风格调性与结构统筹", "引入AI工具完成混剪创作与去重优化", "牵头集团大型影像摄制"], achievements: ["负责张宏民抖音账号运营", "账号粉丝总量 370W+", "单视频最高点赞 219W+"] },
+                    { id: 2, company: "国家开放大学", position: "视频规划师", period: "2014.11-2020.08", icon: "fa-graduation-cap", color: "primary/10", duties: ["全面负责国家级高清微课程全流程摄制", "负责大型线上直播视频保障"], achievements: ["主导《礼仪》等重点栏目制作，服务全国线上教学。"] },
+                    { id: 3, company: "北京金银岛科技", position: "视频制作", period: "2010.06-2014.10", icon: "fa-building", color: "secondary/50", duties: ["主导公司视频创意策划与全流程制作"], achievements: ["构建企业视听资产体系，捕捉行业趋势。"] },
+                    { id: 4, company: "央视12套 & 星斗影视", position: "视频编辑 & 后期", period: "2005.07-2010.06", icon: "fa-television", color: "primary/10", duties: ["参与《天网》《大家看法》等栏目剪辑"], achievements: ["严格遵守媒体纪律，强化内容合规意识。"] }
+                ],
+                portfolio: [
+                    { id: 1, title: "企业宣传片 01", description: "集团品牌形象宣传片制作", date: "2024", categories: ["promo"], cover: "https://picsum.photos/id/10/600/400" },
+                    { id: 2, title: "企业宣传片 02", description: "企业文化宣传专题片", date: "2023", categories: ["promo"], cover: "https://picsum.photos/id/11/600/400" },
+                    { id: 3, title: "企业宣传片 03", description: "产品功能演示宣传片", date: "2023", categories: ["promo"], cover: "https://picsum.photos/id/12/600/400" },
+                    { id: 4, title: "企业宣传片 04", description: "招商合作宣传片", date: "2022", categories: ["promo"], cover: "https://picsum.photos/id/13/600/400" },
+                    { id: 5, title: "企业宣传片 05", description: "年度总结宣传片", date: "2022", categories: ["promo"], cover: "https://picsum.photos/id/14/600/400" },
+                    { id: 6, title: "企业宣传片 06", description: "品牌故事宣传片", date: "2021", categories: ["promo"], cover: "https://picsum.photos/id/15/600/400" },
+                    
+                    { id: 7, title: "短视频作品 01", description: "爆款短视频内容", date: "2024", categories: ["short"], cover: "https://picsum.photos/id/20/600/400" },
+                    { id: 8, title: "短视频作品 02", description: "IP账号短视频", date: "2024", categories: ["short"], cover: "https://picsum.photos/id/21/600/400" },
+                    
+                    { id: 9, title: "UI视觉设计", description: "品牌视觉与UI全案设计", date: "2024", categories: ["ui"], cover: "https://picsum.photos/id/30/600/400" },
+                    
+                    { id: 10, title: "商业摄影 01", description: "商务人像摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/40/600/400" },
+                    { id: 11, title: "商业摄影 02", description: "产品场景摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/41/600/400" },
+                    { id: 12, title: "商业摄影 03", description: "活动现场摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/42/600/400" },
+                    { id: 13, title: "商业摄影 04", description: "形象照摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/43/600/400" },
+                    { id: 14, title: "商业摄影 05", description: "环境空间摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/44/600/400" },
+                    { id: 15, title: "商业摄影 06", description: "团队形象摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/45/600/400" },
+                    { id: 16, title: "商业摄影 07", description: "静物创意摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/46/600/400" },
+                    { id: 17, title: "商业摄影 08", description: "户外场景摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/47/600/400" },
+                    { id: 18, title: "商业摄影 09", description: "高端肖像摄影", date: "2024", categories: ["photography"], cover: "https://picsum.photos/id/48/600/400" }
+                ],
+                education: [
+                    { id: 1, school: "白俄罗斯国立经济大学", degree: "硕士", major: "经济学", period: "2024-2025", icon: "fa-graduation-cap" },
+                    { id: 2, school: "南开大学", degree: "本科", major: "工商管理", period: "2015-2019", icon: "fa-university" },
+                    { id: 3, school: "辽宁科技学院", degree: "大专", major: "动画设计", period: "2002-2005", icon: "fa-paint-brush" }
+                ]
+            };
+        }
 
         let siteData = {};
-        function loadData() {
-            const saved = localStorage.getItem("siteData");
-            siteData = saved ? JSON.parse(saved) : JSON.parse(JSON.stringify(defaultData));
-        }
 
         function renderAll() {
             document.getElementById('nav-name').textContent = siteData.basic.name;
@@ -330,7 +313,7 @@
                 return `<div class="portfolio-item ${item.categories.join(' ')}"><div class="bg-white rounded-xl overflow-hidden shadow-lg hover-lift group"><div class="relative h-48 overflow-hidden"><img src="${item.cover}" class="w-full h-full object-cover"><div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"><button class="bg-accent text-white px-5 py-2 rounded-full transform translate-y-4 group-hover:translate-y-0 transition-transform text-sm">查看详情</button></div></div><div class="p-5"><h3 class="text-lg font-bold mb-2">${item.title}</h3><p class="text-gray-600 mb-3 text-sm">${item.description}</p><div class="flex justify-between items-center"><span class="text-xs text-gray-500">${item.date}</span><div class="flex space-x-2">${item.categories.map(c => `<span class="bg-primary/10 text-primary text-xs px-2 py-1 rounded">${catMap[c] || c}</span>`).join('')}</div></div></div></div></div>`;
             }).join('');
 
-            // 页面加载完成后，默认只显示前9个作品
+            // 默认只显示前9个作品
             const items = document.querySelectorAll('.portfolio-item');
             items.forEach((item, index) => {
                 item.style.display = index < 9 ? 'block' : 'none';
@@ -339,41 +322,8 @@
             document.getElementById('education-grid').innerHTML = siteData.education.map(edu => `<div class="bg-white p-6 rounded-xl shadow-lg hover-lift text-center"><div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fa ${edu.icon} text-2xl text-primary"></i></div><h3 class="text-lg font-bold mb-2">${edu.school}</h3><p class="text-accent font-medium mb-1">${edu.degree}</p><p class="text-gray-600 mb-3 text-sm">${edu.major}</p><p class="text-xs text-gray-500">${edu.period}</p></div>`).join('');
         }
 
-        const ADMIN_USER = "admin";
-        const ADMIN_PASS = "123456";
-        function openAdminLogin() { document.getElementById("admin-login").style.display = "flex"; }
-        function closeAdmin() { document.getElementById("admin-panel").classList.add("-translate-x-full"); }
-        function logoutAdmin() { closeAdmin(); localStorage.removeItem("adminLoggedIn"); }
-        function adminLogin() {
-            const u = document.getElementById("admin-username").value;
-            const p = document.getElementById("admin-password").value;
-            if (u === ADMIN_USER && p === ADMIN_PASS) {
-                localStorage.setItem("adminLoggedIn", "1");
-                document.getElementById("admin-login").style.display = "none";
-                document.getElementById("admin-panel").classList.remove("-translate-x-full");
-                document.getElementById("edit-name").value = siteData.basic.name;
-                document.getElementById("edit-desc").value = siteData.basic.desc;
-                document.getElementById("edit-portfolioIntro").value = siteData.basic.portfolioIntro;
-                document.getElementById("edit-phone").value = siteData.basic.phone;
-                document.getElementById("edit-email").value = siteData.basic.email;
-                document.getElementById("edit-avatar").value = siteData.basic.avatar;
-            } else alert("账号或密码错误");
-        }
-        function saveAllData() {
-            siteData.basic.name = document.getElementById("edit-name").value;
-            siteData.basic.desc = document.getElementById("edit-desc").value;
-            siteData.basic.portfolioIntro = document.getElementById("edit-portfolioIntro").value;
-            siteData.basic.phone = document.getElementById("edit-phone").value;
-            siteData.basic.email = document.getElementById("edit-email").value;
-            siteData.basic.avatar = document.getElementById("edit-avatar").value;
-            localStorage.setItem("siteData", JSON.stringify(siteData));
-            renderAll();
-            alert("保存成功！");
-        }
-
         document.addEventListener('DOMContentLoaded', function() {
             loadData();
-            renderAll();
             const parallaxElements = document.querySelectorAll('.parallax');
             window.addEventListener('scroll', () => {
                 const scrollY = window.scrollY;
@@ -387,7 +337,7 @@
             document.getElementById('back-to-top').addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
             document.getElementById('menu-toggle').addEventListener('click', () => document.getElementById('mobile-menu').classList.toggle('hidden'));
             
-            // 修改后的作品集筛选逻辑
+            // 作品集筛选逻辑
             document.addEventListener('click', (e) => {
                 if (e.target.classList.contains('portfolio-filter')) {
                     document.querySelectorAll('.portfolio-filter').forEach(b => {
@@ -401,7 +351,6 @@
                     items.forEach(i => i.style.display = 'none');
                     
                     if(filter === 'all') {
-                        // 点击全部时显示所有18个作品
                         items.forEach(i => i.style.display = 'block');
                     } else if(filter === 'promo') {
                         Array.from(items).slice(0,6).forEach(i => i.style.display = 'block');
